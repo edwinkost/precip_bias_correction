@@ -22,3 +22,5 @@ Then, to remove the drizzle we will assume if P_corrected_era5land <  Pmin_W5E5,
 The above step will introduce ‘bias‘. Therefore we have to do additional bias correction. 
 Then, we implement the extra bias correction.
 extra_corrected era5land = (Pclim_W5E5 / Pclim_corrected_era5land) x P_corrected_era5land
+
+5. As era5land covers only LAND, we will cover all missing values (e.g. at coastal regions) with the nearest values.  
