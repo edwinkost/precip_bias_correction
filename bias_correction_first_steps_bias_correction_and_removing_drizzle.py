@@ -52,7 +52,7 @@ for year in range(1981,1985):
     
     # implementing the correction
     era5land_daily_yearly_1st_corrected = "tmp_era5land_daily_original_1st_corrected_" + str(year) + ".nc"
-    cmd = "cdo -L -f nc4 -mul " + era5land_daily_yearly_file +  " " + tmp_first_step_monthly_correction_factor + era5land_daily_yearly_1st_corrected
+    cmd = "cdo -L -f nc4 -mul " + era5land_daily_yearly_file +  " " + tmp_first_step_monthly_correction_factor + " " + era5land_daily_yearly_1st_corrected
     print(cmd); os.system(cmd)
     
     # second step: removing the drizzle
