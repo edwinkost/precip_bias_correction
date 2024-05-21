@@ -9,7 +9,8 @@ os.chdir(output_dir)
 # input files
 
 # daily era5land in half degree resolution with the unit: m/day
-daily_era5land = "/scratch/sutan101/forcing_for_beda/era5land/precipitation_daily_1981-2022_halfdeg.nc"
+# ~ daily_era5land = "/scratch/sutan101/forcing_for_beda/era5land/precipitation_daily_1981-2022_halfdeg_mperday.nc"
+daily_era5land = "/scratch/sutan101/forcing_for_beda/era5land/precipitation_daily_1981-1984_halfdeg_mperday.nc"
 
 # daily w5e5 in half degree resolution with the unit: m/day
 daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-2019_mperday.nc"
@@ -33,7 +34,10 @@ cmd = "cdo -L -f nc4 -div " + monthly_climatology_era5land + " " + monthly_clima
 print(cmd); os.system(cmd)
 
 
-for year in range(1981,2023):
+# ~ for year in range(1981,2023):
+
+for year in range(1981,1985):
+
     
     # first step: # removing the bias, implementing the monthly_correction_factor
 
