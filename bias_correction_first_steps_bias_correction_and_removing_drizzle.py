@@ -47,7 +47,7 @@ for year in range(1981,1985):
     print(cmd); os.system(cmd)
     
     era5land_daily_yearly_file = "tmp_era5land_daily_original_" + str(year) + ".nc"
-    cmd = "cdo -L -f nc4 -selyear," + str(year) + " " daily_era5land + " " era5land_daily_yearly_file
+    cmd = "cdo -L -f nc4 -selyear," + str(year) + " " + daily_era5land + " " era5land_daily_yearly_file
     print(cmd); os.system(cmd)
     
     # implementing the correction
