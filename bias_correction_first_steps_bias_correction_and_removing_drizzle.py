@@ -56,7 +56,7 @@ for year in range(1981,1985):
     print(cmd); os.system(cmd)
     
     # second step: removing the drizzle
-    era5land_daily_yearly_1st_corrected_without_drizzle = "era5land_daily_original_1st_corrected_without_drizzle" + str(year) + ".nc"
+    era5land_daily_yearly_1st_corrected_without_drizzle = "era5land_daily_original_1st_corrected_without_drizzle_" + str(year) + ".nc"
     cmd = "cdo -L -f nc4 -min " + minimum_precip_above_drizzle + " " + era5land_daily_yearly_1st_corrected + " " + era5land_daily_yearly_1st_corrected_without_drizzle
     print(cmd); os.system(cmd)
     
