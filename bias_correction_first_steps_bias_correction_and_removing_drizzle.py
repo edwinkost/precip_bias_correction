@@ -38,10 +38,9 @@ cmd = "cdo -L -f nc4 -setrtoc,10,inf,10 -setmisstoc,1.0 -div " + monthly_climato
 print(cmd); os.system(cmd)
 
 
-# ~ for year in range(1981,2023):
+# ~ for year in range(1981,1985):
 
-for year in range(1981,1985):
-
+for year in range(1981,2023):
     
     # first step: # removing the bias, implementing the monthly_correction_factor
 
