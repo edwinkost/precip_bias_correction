@@ -3,6 +3,9 @@ import os
 
 # output directory (create it and go to it)
 output_dir = "/scratch/sutan101/forcing_for_beda_output_test/"
+if os.path.exists(output_dir):
+	cmd = "rm -r " + output_dir
+	print(cmd); os.system(cmd)
 os.makedirs(output_dir)
 os.chdir(output_dir)
 
@@ -72,7 +75,7 @@ for year in range(1981,1985):
     cmd = "cdo -L -f nc4 -ifthenelse " + raindays + " " + era5land_daily_yearly_1st_corrected + " " + dummy_zero + " " + era5land_daily_yearly_1st_corrected_without_drizzle
     print(cmd); os.system(cmd)
     
-    # remove all temporary files
-    cmd = "rm tmp*"
-    print(cmd); os.system(cmd)
+    # ~ # remove all temporary files
+    # ~ cmd = "rm tmp*"
+    # ~ print(cmd); os.system(cmd)
     
