@@ -13,7 +13,8 @@ os.chdir(output_dir)
 daily_era5land = "/scratch/sutan101/forcing_for_beda/era5land/precipitation_daily_1981-1984_halfdeg_mperday.nc"
 
 # daily w5e5 in half degree resolution with the unit: m/day
-daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-2019_mperday.nc"
+# ~ daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-2019_mperday.nc"
+daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-1983_mperday.nc"
 
 
 # calculate the climatology of daily_era5land and daily_w5e5
@@ -55,9 +56,20 @@ for year in range(1981,1985):
     cmd = "cdo -L -f nc4 -mul " + era5land_daily_yearly_file +  " " + tmp_first_step_monthly_correction_factor + " " + era5land_daily_yearly_1st_corrected
     print(cmd); os.system(cmd)
     
+    # identify whether raindays or not
+    # - raindays: if era5land_daily_yearly_1st_corrected > minimum_precip_above_drizzle
+    raindays = "tmp_era5land_daily_raindays_" + str(year) + ".nc"
+    cmd = "cdo -L -f nc4 -ge " + era5land_daily_yearly_1st_corrected + " " + minimum_precip_above_drizzle + " " + raindays
+    print(cmd); os.system(cmd)
+    
+    # create a dummy zero map
+    dummy_zero = "tmp_era5land_dummy_zero_" + str(year) + ".nc"
+    cmd = "cdo -L -f nc4 -mulc,0.0 " + era5land_daily_yearly_1st_corrected + " " + dummy_zero
+    print(cmd); os.system(cmd)
+    
     # second step: removing the drizzle
     era5land_daily_yearly_1st_corrected_without_drizzle = "era5land_daily_original_1st_corrected_without_drizzle_" + str(year) + ".nc"
-    cmd = "cdo -L -f nc4 -min " + minimum_precip_above_drizzle + " " + era5land_daily_yearly_1st_corrected + " " + era5land_daily_yearly_1st_corrected_without_drizzle
+    cmd = "cdo -L -f nc4 -ifthenelse " + raindays + " " + era5land_daily_yearly_1st_corrected + " " + dummy_zero + " " + era5land_daily_yearly_1st_corrected_without_drizzle
     print(cmd); os.system(cmd)
     
     # remove all temporary files
