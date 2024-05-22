@@ -34,7 +34,7 @@ cmd = "cdo -L -f nc4 -setday,1 -setmon,1 -setyear,1800 -timmin -setctomiss,0 " +
 print(cmd); os.system(cmd)
 
 # defining the monthly_correction_factor: Pclim_W5E5 / Pclim_era5land
-cmd = "cdo -L -f nc4 -div " + monthly_climatology_era5land + " " + monthly_climatology_w5e5 + " first_step_monthly_correction_factor.nc"
+cmd = "cdo -L -f nc4 -setmisstoc,1.0 -div " + monthly_climatology_era5land + " " + monthly_climatology_w5e5 + " first_step_monthly_correction_factor.nc"
 print(cmd); os.system(cmd)
 
 
