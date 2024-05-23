@@ -2,7 +2,7 @@
 import os
 
 # output directory (create it and go to it)
-output_dir = "/scratch/sutan101/forcing_for_beda_output_v2024-05-22/first_step/"
+output_dir = "/scratch/sutan101/forcing_for_beda_output_v2024-05-23_correct/first_step/"
 if os.path.exists(output_dir):
 	cmd = "rm -r " + output_dir
 	print(cmd); os.system(cmd)
@@ -34,7 +34,7 @@ cmd = "cdo -L -f nc4 -setday,1 -setmon,1 -setyear,1800 -timmin -setctomiss,0 " +
 print(cmd); os.system(cmd)
 
 # defining the monthly_correction_factor: Pclim_W5E5 / Pclim_era5land
-cmd = "cdo -L -f nc4 -setrtoc,10,inf,10 -setmisstoc,1.0 -div " + monthly_climatology_era5land + " " + monthly_climatology_w5e5 + " first_step_monthly_correction_factor.nc"
+cmd = "cdo -L -f nc4 -setrtoc,10,inf,10 -setmisstoc,1.0 -div " + monthly_climatology_w5e5 + " " + monthly_climatology_era5land + " first_step_monthly_correction_factor.nc"
 print(cmd); os.system(cmd)
 
 
