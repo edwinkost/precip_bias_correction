@@ -49,7 +49,7 @@ for year in range(1981,2023):
     # implementing the correction
     # - set the maximum rainfall in a day to 2 meter per day
     era5land_daily_yearly_final_corrected = "era5land_daily_final_corrected_" + str(year) + ".nc"
-    cmd = "cdo -L -f nc4 oc,2,inf,2 -mul " + era5land_daily_yearly_file +  " " + tmp_final_step_monthly_correction_factor + " " + era5land_daily_yearly_final_corrected
+    cmd = "cdo -L -f nc4 -setrtoc,2,inf,2 -mul " + era5land_daily_yearly_file +  " " + tmp_final_step_monthly_correction_factor + " " + era5land_daily_yearly_final_corrected
     print(cmd); os.system(cmd)
     
     # remove all temporary files
