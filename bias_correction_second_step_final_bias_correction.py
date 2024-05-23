@@ -2,7 +2,7 @@
 import os
 
 # output directory (create it and go to it)
-output_dir = "/scratch/sutan101/forcing_for_beda_output_2nd_step_test/"
+output_dir = "/scratch/sutan101/forcing_for_beda_output_2nd_step_final/"
 if os.path.exists(output_dir):
 	cmd = "rm -r " + output_dir
 	print(cmd); os.system(cmd)
@@ -12,11 +12,10 @@ os.chdir(output_dir)
 # input files
 
 # daily era5land in half degree resolution with the unit: m/day - AFTER THE FIRST STEP
-daily_era5land = "/scratch/sutan101/forcing_for_beda_output_test_1st_step/era5land_daily_original_1st_corrected_without_drizzle_1981-1984.nc"
+daily_era5land = "/scratch/sutan101/forcing_for_beda_output_v2024-05-22/first_step/era5land_daily_original_1st_corrected_without_drizzle_1981-2022.nc"
 
 # daily w5e5 in half degree resolution with the unit: m/day
-# ~ daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-2019_mperday.nc"
-daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-1983_mperday.nc"
+daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-2019_mperday.nc"
 
 # calculate the climatology of daily_era5land and daily_w5e5
 monthly_climatology_era5land = "monthly_climatology_" + os.path.basename(daily_era5land)
@@ -31,9 +30,9 @@ cmd = "cdo -L -f nc4 -setrtoc,10,inf,10 -setmisstoc,1.0 -div " + monthly_climato
 print(cmd); os.system(cmd)
 
 
-# ~ for year in range(1981,2023):
+for year in range(1981,2023):
 
-for year in range(1981,1985):
+# ~ for year in range(1981,1985):
 
     
     # final step: # removing the bias, implementing the monthly_correction_factor
