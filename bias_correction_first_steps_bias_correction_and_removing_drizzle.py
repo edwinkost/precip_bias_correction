@@ -28,9 +28,9 @@ monthly_climatology_w5e5 = "monthly_climatology_" + os.path.basename(daily_w5e5)
 cmd = "cdo -L -f nc4 -setday,1 -setyear,2000 -ymonavg " + daily_w5e5 + " " + monthly_climatology_w5e5 
 print(cmd); os.system(cmd)
 
-# identify the minimum precip above zero from W5E5
+# identify the minimum precip above zero from W5E5, set the minimum to 0.1 mm/day
 minimum_precip_above_drizzle = "minimum_precip_above_drizzle.nc"
-cmd = "cdo -L -f nc4 -setday,1 -setmon,1 -setyear,1800 -timmin -setctomiss,0 " + str(daily_w5e5) + " " + minimum_precip_above_drizzle
+cmd = "cdo -L -f nc4 -setday,1 -setmon,1 -setyear,1800 -maxc,0.0001 -timmin -setctomiss,0 " + str(daily_w5e5) + " " + minimum_precip_above_drizzle
 print(cmd); os.system(cmd)
 
 # defining the monthly_correction_factor: Pclim_W5E5 / Pclim_era5land
