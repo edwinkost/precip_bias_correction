@@ -2,7 +2,7 @@
 import os
 
 # output directory (create it and go to it)
-output_dir = "/scratch/sutan101/forcing_for_beda_output_v2024-05-23_correct/second_final_step/"
+output_dir = "/scratch/sutan101/forcing_for_beda_output_v2024-05-24_alternative/second_final_step/"
 if os.path.exists(output_dir):
 	cmd = "rm -r " + output_dir
 	print(cmd); os.system(cmd)
@@ -12,7 +12,7 @@ os.chdir(output_dir)
 # input files
 
 # daily era5land in half degree resolution with the unit: m/day - AFTER THE FIRST STEP
-daily_era5land = "/scratch/sutan101/forcing_for_beda_output_v2024-05-23_correct/first_step/merged_era5land_daily_original_1st_corrected_without_drizzle_1981-2022.nc"
+daily_era5land = "/scratch/sutan101/forcing_for_beda_output_v2024-05-24_alternative/first_step/merged_era5land_daily_original_1st_corrected_without_drizzle_1981-2022.nc"
 
 # daily w5e5 in half degree resolution with the unit: m/day
 daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-2019_mperday.nc"
