@@ -35,10 +35,10 @@ cd ${NC_OUTPUT_FOLDER}
 
 NC_OUTPUT_PATTERN="pet_daily_era5land-ulysses_05min"
 
+. /home/edwin/load_all_default.sh
+
 # - loop through all years
 for i in {1981..2002}
-
-. /home/edwin/load_all_default.sh
 
 do
  
