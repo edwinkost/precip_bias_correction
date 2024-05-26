@@ -29,7 +29,7 @@
 NC_INPUT_FILE="/scratch-shared/edwinhs/uly_forcing_files_v2024-02-XX_em-earth_era5land/pet_daily_era5land_1981-2022.nc"
 GRID_DES_FILE="/projects/0/dfguu/users/edwin/data/cdo_grid_description_files/global_grid_des_05min.txt"
 
-NC_OUTPUT_FOLDER="/scratch-shared/edwin/era5land_uly_forcing_files_for_beda/"
+NC_OUTPUT_FOLDER="/scratch-shared/edwin/era5land_uly_forcing_files_for_beda/pet/"
 mkdir -p ${NC_OUTPUT_FOLDER}
 cd ${NC_OUTPUT_FOLDER}
 
