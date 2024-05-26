@@ -13,7 +13,7 @@
 #SBATCH -p genoa
 
 # job name
-#SBATCH -J pet_remapcon_and_fillmiss2
+#SBATCH -J tavg_remapcon_and_fillmiss2
 
 #~ (pcrglobwb_python3) edwin@tcn543.local.snellius.surf.nl:/scratch-shared/edwinaha/forcing_for_beda_v2024-24-05$ ls -lah /scratch-shared/edwinhs/uly_forcing_files_v2024-02-XX_em-earth_era5land
 #~ total 1.2T
