@@ -38,13 +38,13 @@ NC_OUTPUT_PATTERN="pet_daily_era5land-ulysses_05min"
 # - loop through all years
 for i in {1981..2002}
 
+. /home/edwin/load_all_default.sh
+
 do
  
  YEAR=$i
  
- cdo -L -f nc4 -selyear,${YEAR} -settime,00:00:00 -fillmiss2 -remapcon,${GRID_DES_FILE} ${NC_INPUT_FILE} ${NC_OUTPUT_PATTERN}_${YEAR}.nc
- 
- &
+ cdo -L -f nc4 -settime,00:00:00 -fillmiss2 -remapcon,${GRID_DES_FILE} -selyear,${YEAR} ${NC_INPUT_FILE} ${NC_OUTPUT_PATTERN}_${YEAR}.nc &
  
 done
 
