@@ -7,7 +7,7 @@
 #SBATCH -n 192
 
 # wall clock time (maximum 120 hours)
-#SBATCH -t 119:59:00
+#SBATCH -t 24:00:00
 
 # the partition name 
 #SBATCH -p genoa
