@@ -2,7 +2,7 @@
 import os
 
 # output directory (create it and go to it)
-output_dir = "/scratch/sutan101/forcing_for_beda_output_v2024-05-24_alternative/first_step/"
+output_dir = "/scratch/sutan101/forcing_for_beda_output_v2024-05-26_correct/first_step/"
 if os.path.exists(output_dir):
 	cmd = "rm -r " + output_dir
 	print(cmd); os.system(cmd)
@@ -20,12 +20,12 @@ daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5
 # ~ daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-1983_mperday.nc"
 
 
-# calculate the climatology of daily_era5land and daily_w5e5
-monthly_climatology_era5land = "monthly_climatology_" + os.path.basename(daily_era5land)
-cmd = "cdo -L -f nc4 -setday,1 -setyear,2000 -ymonavg " + daily_era5land + " " + monthly_climatology_era5land
+# calculate the climatology of daily_era5land and daily_w5e5 - based on the years 1981-2019 only 
+monthly_climatology_era5land = "monthly_climatology_1981-2019_" + os.path.basename(daily_era5land)
+cmd = "cdo -L -f nc4 -setday,1 -setyear,2000 -ymonavg -selyear,1981/2019 " + daily_era5land + " " + monthly_climatology_era5land
 print(cmd); os.system(cmd)
-monthly_climatology_w5e5 = "monthly_climatology_" + os.path.basename(daily_w5e5)
-cmd = "cdo -L -f nc4 -setday,1 -setyear,2000 -ymonavg " + daily_w5e5 + " " + monthly_climatology_w5e5 
+monthly_climatology_w5e5 = "monthly_climatology_1981-2019_" + os.path.basename(daily_w5e5)
+cmd = "cdo -L -f nc4 -setday,1 -setyear,2000 -ymonavg -selyear,1981/2019 " + daily_w5e5 + " " + monthly_climatology_w5e5 
 print(cmd); os.system(cmd)
 
 # identify the minimum precip above zero from W5E5, set the minimum to 0.1 mm/day
