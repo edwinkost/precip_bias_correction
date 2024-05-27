@@ -12,7 +12,7 @@ os.chdir(output_dir)
 # input files
 
 # daily era5land in half degree resolution with the unit: m/day - AFTER THE FIRST STEP
-daily_era5land = "/scratch/sutan101/forcing_for_beda_output_v2024-05-26_correct/first_step/era5land_daily_original_1st_corrected_without_drizzle_1981-2022.nc"
+daily_era5land = "/scratch/sutan101/forcing_for_beda_output_v2024-05-26_correct/first_step/merged_era5land_daily_original_1st_corrected_without_drizzle_1981-2022.nc"
 
 # daily w5e5 in half degree resolution with the unit: m/day
 daily_w5e5     = "/scratch/sutan101/forcing_for_beda/w5e5/precipitation_daily_w5e5_1979-2019_mperday.nc"
@@ -48,7 +48,7 @@ for year in range(1981,2023):
     
     # implementing the correction
     # - set the maximum rainfall in a day to 2 meter per day
-    era5land_daily_yearly_final_corrected = "era5land_daily_final_corrected_" + str(year) + ".nc"
+    era5land_daily_yearly_final_corrected = "precipitation_era5land_daily_final_corrected_" + str(year) + ".nc"
     cmd = "cdo -L -f nc4 -setrtoc,2,inf,2 -mul " + era5land_daily_yearly_file +  " " + tmp_final_step_monthly_correction_factor + " " + era5land_daily_yearly_final_corrected
     print(cmd); os.system(cmd)
     
