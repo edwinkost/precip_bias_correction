@@ -29,7 +29,7 @@
 NC_INPUT_FILE="/scratch-shared/edwin/era5land_wmo/from_uly/tavg_era5land_daily_celcius_1981-2022.nc"
 GRID_DES_FILE="/scratch-shared/edwin/era5land_wmo/from_uly/griddes_05min.txt"
 
-NC_OUTPUT_FOLDER="/scratch-shared/edwindan/era5land_uly_forcing_files/tavg/"
+NC_OUTPUT_FOLDER="/scratch-shared/edwindan/era5land_uly_forcing_files/tavg_daily/"
 mkdir -p ${NC_OUTPUT_FOLDER}
 cd ${NC_OUTPUT_FOLDER}
 
